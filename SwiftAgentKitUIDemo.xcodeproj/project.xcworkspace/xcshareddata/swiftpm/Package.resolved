@@ -1,0 +1,42 @@
+{
+  "originHash" : "6a3cb6bbf948b21f352ad6ed1f14e0ec9315770bbf47dc974fbb4a6ced993a04",
+  "pins" : [
+    {
+      "identity" : "llmproviderkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ayman3000/LLMProviderKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b9e7d449d9e573f17875dc9e82f4c678983ee320"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "79e4b74a295b6eb74a8b585e3a39d29e70c1dbd1",
+        "version" : "603.0.2"
+      }
+    },
+    {
+      "identity" : "swiftagentkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ayman3000/SwiftAgentKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "e464f74eb71cfd8ab8909eaaf6be527ef686a20b"
+      }
+    },
+    {
+      "identity" : "swiftagentkitui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ayman3000/SwiftAgentKitUI.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "7360074002683c49741ab4f7edc7cd4464a25654"
+      }
+    }
+  ],
+  "version" : 3
+}
