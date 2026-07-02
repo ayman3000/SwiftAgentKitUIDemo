@@ -7,3 +7,6 @@ xcuserdata/
 *.xccheckout
 *.moved-aside
 *.xcworkspace/xcuserdata/
+
+# Internal docs
+PACKAGE_FEEDBACK_FOR_AGENT.md
