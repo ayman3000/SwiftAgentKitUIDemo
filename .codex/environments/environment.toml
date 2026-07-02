@@ -6,6 +6,6 @@ name = "SwiftAgentKitUIDemo"
 script = ""
 
 [[actions]]
-name = "Run"
+name = "Build"
 icon = "run"
-command = "./script/build_and_run.sh"
+command = "xcodebuild -project SwiftAgentKitUIDemo.xcodeproj -scheme SwiftAgentKitUIDemo -configuration Debug -destination 'platform=macOS' -derivedDataPath build/DerivedData -skipMacroValidation build"

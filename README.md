@@ -109,8 +109,6 @@ SwiftAgentKitUIDemo/
 │   ├── Support/
 │   ├── Tools/
 │   └── Views/
-├── script/
-│   └── build_and_run.sh
 ├── .codex/
 │   └── environments/environment.toml
 └── README.md
@@ -150,7 +148,13 @@ No package source is copied into this repository.
 3. Let Xcode resolve Swift Package dependencies.
 4. Build and run the macOS app.
 
-If Xcode asks whether to trust or enable the `SwiftAgentKitMacros` macro target from `SwiftAgentKit`, allow it. The CLI commands below use `-skipMacroValidation` for noninteractive builds.
+If Xcode shows this issue:
+
+```text
+Macro "SwiftAgentKitMacros" from package "SwiftAgentKit" must be enabled before it can be used
+```
+
+expand the issue in Xcode and choose the option to trust or enable the `SwiftAgentKitMacros` macro from `SwiftAgentKit`. This is a one-time local Xcode trust step for Swift package macros. The CLI command below uses `-skipMacroValidation` so noninteractive terminal builds do not stop on that prompt.
 
 ## Build From Terminal
 
@@ -161,18 +165,6 @@ xcodebuild \
   -destination "platform=macOS" \
   -skipMacroValidation \
   build
-```
-
-## Build And Launch
-
-```bash
-./script/build_and_run.sh
-```
-
-To build, launch, and verify that the app process is running:
-
-```bash
-./script/build_and_run.sh --verify
 ```
 
 ## Ollama Setup
