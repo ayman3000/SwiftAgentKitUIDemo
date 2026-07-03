@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ayman3000/SwiftAgentKitUI.git",
       "state" : {
-        "revision" : "97a365c2507e558170c64a8fe87e64261078df27",
-        "version" : "0.1.0-alpha.2"
+        "revision" : "da0a75d030c33667dfbd93ac25d4e6a09bfa2cb3",
+        "version" : "0.1.0-alpha.3"
       }
     }
   ],

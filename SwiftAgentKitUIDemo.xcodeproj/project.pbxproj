@@ -429,7 +429,7 @@
 			repositoryURL = "https://github.com/ayman3000/SwiftAgentKitUI.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = "0.1.0-alpha.2";
+				minimumVersion = "0.1.0-alpha.3";
 			};
 		};
 		70A000000000000000000002 /* XCRemoteSwiftPackageReference "SwiftAgentKit" */ = {
