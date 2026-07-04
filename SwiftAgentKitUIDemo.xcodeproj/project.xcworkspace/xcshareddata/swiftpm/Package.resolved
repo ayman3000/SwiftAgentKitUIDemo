@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ayman3000/LLMProviderKit.git",
       "state" : {
-        "revision" : "d72e3eb676e70d00be52aa55688ab7d0f7010a4f",
-        "version" : "0.1.0-alpha.3"
+        "revision" : "51c5c89efb140e429b37966541ca31e846e87b14",
+        "version" : "0.1.0-alpha.4"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ayman3000/SwiftAgentKit.git",
       "state" : {
-        "revision" : "4ba4783d8272fcbf09245d5ed9c85f61c5c88e2d",
-        "version" : "0.1.0-alpha.3"
+        "revision" : "c016b1554fac5a3ddaaa57985aad30f4686462fa",
+        "version" : "0.1.0-alpha.4"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ayman3000/SwiftAgentKitUI.git",
       "state" : {
-        "revision" : "b6dfa81b90d700dfe41aeaf3239627d0f7cbb2dc",
-        "version" : "0.1.0-alpha.4"
+        "revision" : "789a54a6cf89652263476a4f7cbba15e6f8436ba",
+        "version" : "0.1.0-alpha.5"
       }
     }
   ],
