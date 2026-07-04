@@ -51,24 +51,16 @@ enum DemoProvider: String, CaseIterable, Identifiable {
         }
     }
 
-    var suggestedModels: [LLMModelInfo] {
+    var curatedModels: [LLMModelInfo] {
         switch self {
         case .ollama:
-            []
+            OllamaProvider.suggestedModels
         case .openAI:
-            [
-                LLMModelInfo(id: "gpt-5.4-mini", providerName: providerName, displayName: "GPT-5.4 mini", capabilities: [.chat, .streaming, .tools]),
-                LLMModelInfo(id: "gpt-5.4", providerName: providerName, displayName: "GPT-5.4", capabilities: [.chat, .streaming, .tools]),
-                LLMModelInfo(id: "gpt-5.5", providerName: providerName, displayName: "GPT-5.5", capabilities: [.chat, .streaming, .tools]),
-            ]
+            OpenAIProvider.curatedModels
         case .anthropic:
             AnthropicProvider.curatedModels
         case .gemini:
-            [
-                LLMModelInfo(id: "gemini-3.5-flash", providerName: providerName, displayName: "Gemini 3.5 Flash", capabilities: [.chat, .streaming, .tools]),
-                LLMModelInfo(id: "gemini-3.1-flash-lite", providerName: providerName, displayName: "Gemini 3.1 Flash-Lite", capabilities: [.chat, .streaming, .tools]),
-                LLMModelInfo(id: "gemini-3.1-pro", providerName: providerName, displayName: "Gemini 3.1 Pro", capabilities: [.chat, .streaming, .tools]),
-            ]
+            GeminiProvider.curatedModels
         }
     }
 

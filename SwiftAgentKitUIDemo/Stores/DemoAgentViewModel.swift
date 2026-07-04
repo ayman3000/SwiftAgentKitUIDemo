@@ -30,10 +30,12 @@ final class DemoAgentViewModel: ObservableObject {
     @Published var activeAgent: Agent
     @Published var activeAgentID = UUID()
 
+    private let modelCatalog = LLMModelCatalog()
+
     init() {
         let provider = DemoProvider.ollama.makeProvider(apiKey: nil, defaultModel: nil)
         activeAgent = Self.makeAgent(provider: provider, model: nil, toolsEnabled: true)
-        availableModels = DemoProvider.ollama.suggestedModels
+        availableModels = DemoProvider.ollama.curatedModels
     }
 
     var currentAPIKey: String {
@@ -68,10 +70,12 @@ final class DemoAgentViewModel: ObservableObject {
         let providerKind = selectedProvider
         let apiKey = currentAPIKey.nilIfBlank
         let currentModel = selectedModel
+        let curatedModels = providerKind.curatedModels
 
         if providerKind.requiresAPIKey && apiKey == nil && providerKind != .anthropic {
-            availableModels = providerKind.suggestedModels
-            modelStatus = "Enter an API key to load \(providerKind.displayName) models."
+            await modelCatalog.register(curatedModels, for: providerKind.providerName)
+            availableModels = sortedModels(await modelCatalog.models(for: providerKind.providerName))
+            modelStatus = "Enter an API key to load live \(providerKind.displayName) models. Showing curated suggestions."
             if selectedModelID.isEmpty {
                 selectedModelID = availableModels.first?.id ?? ""
             }
@@ -84,10 +88,12 @@ final class DemoAgentViewModel: ObservableObject {
 
         do {
             let provider = providerKind.makeProvider(apiKey: apiKey, defaultModel: currentModel)
-            let models = try await provider.availableModels()
-                .sorted { lhs, rhs in
-                    (lhs.displayName ?? lhs.id).localizedCaseInsensitiveCompare(rhs.displayName ?? rhs.id) == .orderedAscending
-                }
+            try await modelCatalog.refresh(
+                from: provider,
+                curatedModels: curatedModels,
+                strategy: .liveWithCuratedMetadata
+            )
+            let models = sortedModels(await modelCatalog.models(for: providerKind.providerName))
 
             guard selectedProvider == providerKind else { return }
             availableModels = models
@@ -98,8 +104,9 @@ final class DemoAgentViewModel: ObservableObject {
             }
         } catch {
             guard selectedProvider == providerKind else { return }
-            availableModels = providerKind.suggestedModels
-            modelStatus = "\(providerKind.displayName) model load failed: \(error.localizedDescription)"
+            await modelCatalog.register(curatedModels, for: providerKind.providerName)
+            availableModels = sortedModels(await modelCatalog.models(for: providerKind.providerName))
+            modelStatus = "\(providerKind.displayName) model load failed: \(error.localizedDescription). Showing curated suggestions."
             if selectedModelID.isEmpty {
                 selectedModelID = availableModels.first?.id ?? ""
             }
@@ -107,12 +114,12 @@ final class DemoAgentViewModel: ObservableObject {
     }
 
     private func applyProviderDefaults() {
-        availableModels = selectedProvider.suggestedModels
+        availableModels = sortedModels(selectedProvider.curatedModels)
         selectedModelID = availableModels.first?.id ?? ""
         customModelName = ""
         modelStatus = selectedProvider == .ollama
             ? "Refresh to load local Ollama models."
-            : "Use a suggested model or enter a custom model name."
+            : "Use curated suggestions or refresh live models."
         refreshModels()
     }
 
@@ -122,6 +129,13 @@ final class DemoAgentViewModel: ObservableObject {
         let provider = selectedProvider.makeProvider(apiKey: apiKey, defaultModel: model)
         activeAgent = Self.makeAgent(provider: provider, model: model, toolsEnabled: toolsEnabled)
         activeAgentID = UUID()
+    }
+
+    private func sortedModels(_ models: [LLMModelInfo]) -> [LLMModelInfo] {
+        models.sorted { lhs, rhs in
+            if lhs.isDeprecated != rhs.isDeprecated { return !lhs.isDeprecated && rhs.isDeprecated }
+            return (lhs.displayName ?? lhs.id).localizedCaseInsensitiveCompare(rhs.displayName ?? rhs.id) == .orderedAscending
+        }
     }
 
     private static func makeAgent(provider: any LLMProvider, model: String?, toolsEnabled: Bool) -> Agent {

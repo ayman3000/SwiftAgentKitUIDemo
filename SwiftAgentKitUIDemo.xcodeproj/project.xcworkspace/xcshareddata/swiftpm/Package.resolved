@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ayman3000/LLMProviderKit.git",
       "state" : {
-        "revision" : "614fffd0550ded4340aa015a33b74659d2d219e9",
-        "version" : "0.1.0-alpha.2"
+        "revision" : "d72e3eb676e70d00be52aa55688ab7d0f7010a4f",
+        "version" : "0.1.0-alpha.3"
       }
     },
     {

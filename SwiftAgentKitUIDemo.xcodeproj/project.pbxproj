@@ -445,7 +445,7 @@
 			repositoryURL = "https://github.com/ayman3000/LLMProviderKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = "0.1.0-alpha.2";
+				minimumVersion = "0.1.0-alpha.3";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
