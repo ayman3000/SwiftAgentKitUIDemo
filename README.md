@@ -6,6 +6,8 @@ Build a real macOS AI chat client in SwiftUI without rebuilding the agent stack 
 
 This repository is intentionally small. It does not vendor the packages it demonstrates; it uses normal Xcode Swift Package references to the GitHub repositories.
 
+> If this demo helped you understand the Swift AI stack, a ⭐ on the related packages is appreciated.
+
 ## What You Get
 
 - A real `.xcodeproj` macOS app target named `SwiftAgentKitUIDemo`
