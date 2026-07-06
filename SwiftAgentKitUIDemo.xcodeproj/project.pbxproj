@@ -429,7 +429,7 @@
 			repositoryURL = "https://github.com/ayman3000/SwiftAgentKitUI.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = "0.1.0-alpha.5";
+				minimumVersion = "0.1.0-alpha.6";
 			};
 		};
 		70A000000000000000000002 /* XCRemoteSwiftPackageReference "SwiftAgentKit" */ = {
@@ -437,7 +437,7 @@
 			repositoryURL = "https://github.com/ayman3000/SwiftAgentKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = "0.1.0-alpha.4";
+				minimumVersion = "0.1.0-alpha.5";
 			};
 		};
 		70A000000000000000000003 /* XCRemoteSwiftPackageReference "LLMProviderKit" */ = {
@@ -445,7 +445,7 @@
 			repositoryURL = "https://github.com/ayman3000/LLMProviderKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = "0.1.0-alpha.4";
+				minimumVersion = "0.1.0-alpha.5";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
